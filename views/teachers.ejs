@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1><%=header %></h1>
+    <table border="1">
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+      </tr>
+      
+        <% data_teacher.forEach( data => { %>
+          <tr>
+          <td><%= data.id %></td>
+          <td><%= data.first_name %> </td>
+          <td><%= data.last_name %></td>
+          <td><%= data.email %></td>  
+          </tr>
+        <% }) %> 
+    </table>
+    <br>
+    <a href="/">index page</a>
+  </body>
+</html>
