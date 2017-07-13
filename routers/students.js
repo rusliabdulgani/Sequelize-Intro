@@ -32,6 +32,7 @@ router.post('/', (req,res) =>{
   })
 })
 
+
 router.get('/edit/:id', (req, res) => {
   let id = req.params.id
   db.Student.findById(id)
