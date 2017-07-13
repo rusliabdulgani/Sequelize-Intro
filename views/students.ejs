@@ -21,11 +21,13 @@
           <td><%= data.last_name %></td>
           <td><%= data.email %> </td>
           <td><%= data.jurusan %> </td>
-          <td><a href="/students/edit/<%=data_students[0].id %>">edit</a></td>
-          <td><a href="/students/delete/<%=data_students[0].id %>">delete</a></td>
+          <td><a href="/students/edit/<%=data.id %>">edit</a></td>
+          <td><a href="/students/delete/<%=data.id %>">delete</a></td>
           </tr>
         <% }) %> 
     </table>
+    <br>
+    <h3><%= err_msg %></h3>
     <br>
     <form action="/students" method="post">
       <table>
