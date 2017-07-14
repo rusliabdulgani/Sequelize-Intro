@@ -27,17 +27,16 @@ router.post('/', (req,res) =>{
     db.Student.findAll()
     .then( data => {
       res.render('students', {header: 'Students Page', data_students: data, err_msg: msg_str })
-      console.log(`-----------------------${err.errors[0].message}`);
+      console.log(`-----------------------${JSON.stringify(err)}`);
     })
   })
 })
-
 
 router.get('/edit/:id', (req, res) => {
   let id = req.params.id
   db.Student.findById(id)
   .then(data => {
-    res.render('edit_student', {header: 'Edit Student Page', edit_student: data});
+    res.render('edit_student', {header: 'Edit Student Page', edit_student: data, err_msg: null });
   })
   .catch( err =>{
     console.log(err);
@@ -59,7 +58,12 @@ router.post('/edit/:id', (req, res) => {
     res.redirect('/students');
   })
   .catch(err =>{
-    console.log(err);
+    msg_str = err.errors[0].message;
+    db.Student.findAll()
+    .then( data => {
+      res.render('students', {header: 'Edit Student Page', data_students: data, err_msg: msg_str })
+      console.log(`-----------------------${JSON.stringify(err)}`);
+    })
   })
 })
 

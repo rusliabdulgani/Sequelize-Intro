@@ -9,16 +9,16 @@ module.exports = function(sequelize, DataTypes) {
         isEmail: {
           args: true,
           msg: 'Format email salah'
-        }
+        },
+      },
+      unique: {
+        args: true,
+        msg: 'Email sudah digunakan'
       }
     },
     jurusan: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
   });
+  
+  
   return Student;
 };
