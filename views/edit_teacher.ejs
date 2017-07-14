@@ -23,18 +23,12 @@
         <tr>
           <td>Subject Name:</td>
           <td>
-          <select name="subject_id">
-            <% if (data_teacher.SubjectId === null ){ %>
-              <option value="<%= data_subject.id %>">Unassigned</option>
-              <% data_subject.forEach( dt => { %>
-              <option value="<%=dt.id %>"><%= dt.subject_name %></option>
-              <% }) %>
-            <% } else { %>
-              <option value="<%= data_subject.id %>"><%= data_subject.subject_name %></option>
-              <% data_subject.forEach( dt => { %>
-              <option value="<%=dt.id %>"><%= dt.subject_name %></option>
-              <% }) %>
-              <% } %>
+          <select name="SubjectId">
+            <option value="<% data_subject[0].id%>"><%=data_subject[(data_teacher.SubjectId-1)].subject_name %></option>
+            <% data_subject.forEach( dt => { %>
+              <option value="<%= dt.id %>"><%= dt.subject_name%></option>
+            <% }) %>
+            
           </select>
           </td>
         </tr>

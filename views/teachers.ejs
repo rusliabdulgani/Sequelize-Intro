@@ -21,7 +21,7 @@
           <td><%= data.first_name %> </td>
           <td><%= data.last_name %></td>
           <td><%= data.email %></td>  
-          <% if (data.SubjectId == null){ %>
+          <% if (data.SubjectId === null){ %>
           <td>Unassigned</td>
           <% } else { %>
           <td><%= data.Subject.subject_name %></td>
@@ -47,9 +47,9 @@
           <td><input type="text" name="email" placeholder="input email"></td>
         </tr>
         <tr>
-          <td>Subjects Name:</td>
+          <td>Subjects Id:</td>
           <td>
-            <select name="subject_id">
+            <select name="SubjectId">
               <option value="">pilih subject</option>
               <% data_subject.forEach( dt =>  { %>
                 <option value="<%= dt.id %>"><%= dt.subject_name %></option>

@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
     db.Subject.findAll()
     .then( data2 =>{
       res.render('teachers', {header: 'Teachers Page',data_teacher: data1, data_subject: data2})
-      console.log(data2);
+      console.log(data2[0].subject_name);
     })
   })
 })
@@ -38,7 +38,7 @@ router.get('/edit/:id', (req, res) => {
     db.Subject.findAll()
     .then( data2 =>{
       res.render('edit_teacher', {header: 'Edit Teacher', data_teacher: data1, data_subject: data2})
-      console.log('------------------------------',data1.SubjectId);
+        console.log('------------------------------',data2[0].subject_name);
     })
   })
 })
