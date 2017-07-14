@@ -35,8 +35,21 @@ router.post('/edit/:id', (req, res) => {
   db.Subject.update({data}, {
     where: {id:id}
   })
-  .then( ()=>{
+  .then( data =>{
     res.redirect('/subjects')
+  })
+  .catch( err => {
+    console.log(err);
+  })
+})
+
+router.get('/delete/:id', (req, res) => {
+  let id = req.params.id
+  db.Subject.destroy({
+    where: {id:id}
+  })
+  .then( () => {
+    res.redirect('/subjects');
   })
   .catch( err => {
     console.log(err);
