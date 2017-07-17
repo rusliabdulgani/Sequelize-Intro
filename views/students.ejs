@@ -3,9 +3,11 @@
   <head>
     <meta charset="utf-8">
     <%- include ./layouts/title %>
+    <%- include ./layouts/style%>
   </head>
   <body>
     <h1><%=header %></h1>
+    <%- include ./layouts/menubar %>
     <table border="1">
       <tr>
         <th>ID</th>
@@ -49,6 +51,5 @@
         </tr>
       </table>
     </form>
-    <a href="/">index page</a>
   </body>
 </html>
