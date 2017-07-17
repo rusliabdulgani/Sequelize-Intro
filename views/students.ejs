@@ -13,6 +13,7 @@
         <th>Last Name</th>
         <th>Email</th>
         <th>Jurusan</th>
+        <th>Actions</th>
       </tr>
         <% data_students.forEach( data => { %>
           <tr>
@@ -20,7 +21,7 @@
           <td><%= data.first_name %> </td>
           <td><%= data.last_name %></td>
           <td><%= data.email %> </td>
-          <td><%= data.jurusan %> </td>
+          <td><a href="/students/<%= data.id %>/addsubject">add subject</a></td>
           <td><a href="/students/edit/<%=data.id %>">edit</a></td>
           <td><a href="/students/delete/<%=data.id %>">delete</a></td>
           </tr>
@@ -42,10 +43,6 @@
         <tr>
           <td>Email:</td>
           <td><input type="text" name="Email" placeholder="input email"></td>
-        </tr>
-        <tr>
-          <td>Jurusan:</td>
-          <td><input type="text" name="Jurusan" placeholder="input jurusan"></td>
         </tr>
         <tr>
           <td><input type="submit" value="Submit"></td>

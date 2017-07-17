@@ -19,6 +19,10 @@ module.exports = function(sequelize, DataTypes) {
     jurusan: DataTypes.STRING
   });
   
-  
+  Student.associate = (models) => {
+    Student.belongsToMany(models.Subject, {
+      through: 'StudentsSubject'
+    })
+  }
   return Student;
 };

@@ -56,6 +56,56 @@ router.get('/delete/:id', (req, res) => {
   })
 })
 
+router.get('/:id/enrolledstudents', (req, res) => {
+  let id = req.params.id
+  db.StudentsSubject.findAll({
+    order: [['Student','first_name']],
+    where: {
+      SubjectId:id
+    },
+    include: [{all: true}]
+  })
+  .then( data => {
+    res.render('enrolledstudents', {header: 'Enrolled Students Page',dataEnrolled: data})
+  })
+})
+
+router.get('/givescore/:id/:idSbj', (req, res)=> {
+  let id = req.params.id;
+  let idSbj = req.params.idSbj;
+  db.StudentsSubject.findAll({
+    where: {
+      StudentId: id,
+      $and: {SubjectId: idSbj}
+    },
+    include: [{all: true}]
+  })
+  .then( data => {
+    res.render(`givescore`, {dataScore : data})
+    console.log(`--------------------------`,data[0]);
+  })
+})
+
+router.post('/givescore/:id/:idSbj', (req, res) => {
+  let data = req.body;
+  let id = req.params.id;
+  let idSbj = req.params.idSbj;
+  db.StudentsSubject.update({
+    score: data.score
+  },{
+    where: {
+      StudentId:id,
+      $and: {SubjectId:idSbj} 
+    }
+  })
+  .then( ()=>{
+    res.redirect(`/subjects/${req.params.idSbj}/enrolledstudents`)
+  })
+  .catch( err => {
+    console.log(`error nya ${err}`);
+  })
+})
+
 
 
 

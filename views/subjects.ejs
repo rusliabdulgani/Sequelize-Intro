@@ -10,7 +10,8 @@
       <tr>
         <th>ID</th>
         <th>Subject Name</th>
-        <th>Teacher Name</th>
+        <th>Teachers</th>
+        <th>Actions</th>
         <th>Options</th>
       </tr>
         <% let jmlSbj = 1 %>
@@ -29,6 +30,7 @@
           <%= data_kosong %>
           <% } %>
           </td>
+          <td><a href="/subjects/<%= data.id %>/enrolledstudents">Enrolled Students</a></td>
           <td>
           <a href="/subjects/edit/<%= data.id %>">edit</a>
           <a href="/subjects/delete/<%= data.id %>">delete</a>
