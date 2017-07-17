@@ -1,5 +1,6 @@
 const express = require('express');
 const db = require('../models');
+const letterScore = require('../helpers/score.js')
 
 var router = express.Router();
 
@@ -8,7 +9,7 @@ router.get('/', (req, res) => {
     include: [db.Teacher]
   })
   .then( data => {
-      res.render('subjects', {header: 'Subject Page', data_subject: data, data_kosong: 'Belum ada guru'})
+      res.render('subjects', {title: 'subject page',header: 'Subject Page', data_subject: data, data_kosong: 'Belum ada guru'})
       console.log(`--------------------- ${data[0].Teachers[0].first_name}`);
     })
 })
@@ -24,7 +25,7 @@ router.get('/edit/:id', (req, res) => {
   let id = req.params.id
   db.Subject.findById(id)
   .then( data => {
-    res.render('edit_subject', {header: 'Edit Subject Page', data_subject : data})
+    res.render('edit_subject', {title: 'edit page',header: 'Edit Subject Page', data_subject : data})
     console.log(`-------------------------- ${data.id}`);
   })
 })
@@ -66,7 +67,7 @@ router.get('/:id/enrolledstudents', (req, res) => {
     include: [{all: true}]
   })
   .then( data => {
-    res.render('enrolledstudents', {header: 'Enrolled Students Page',dataEnrolled: data})
+    res.render('enrolledstudents', {title: 'enrolled students',header: 'Enrolled Students Page',dataEnrolled: letterScore(data)})
   })
 })
 
@@ -82,7 +83,6 @@ router.get('/givescore/:id/:idSbj', (req, res)=> {
   })
   .then( data => {
     res.render(`givescore`, {dataScore : data})
-    console.log(`--------------------------`,data[0]);
   })
 })
 

@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
   .then( data1 => {
     db.Subject.findAll()
     .then( data2 =>{
-      res.render('teachers', {header: 'Teachers Page',data_teacher: data1, data_subject: data2})
+      res.render('teachers', {title: 'Teachers Page',header: 'Teachers Page',data_teacher: data1, data_subject: data2})
       console.log(data2[0].subject_name);
     })
   })

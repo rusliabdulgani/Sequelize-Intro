@@ -12,7 +12,8 @@ router.get('/', (req, res) => {
     })
     .then(data => {
       res.render('students', {
-        header: 'Students Page',
+        header: 'Student Page',
+        title: 'Students Page',
         data_students: data,
         err_msg: ''
       })
