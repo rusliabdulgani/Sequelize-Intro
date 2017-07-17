@@ -19,6 +19,7 @@
           <td><%= dt.Student.first_name %> <%= dt.Student.last_name %></td>
           <% if (dt.score == null) { %>
           <td><a href="/subjects/givescore/<%= dt.StudentId %>/<%=dt.SubjectId %>">Give Score</a></td>
+          <td>empty</td>
         <%} else {%>
           <td><%= dt.score %></td>
           <td><%= dt.letter %></td>

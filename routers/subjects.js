@@ -82,7 +82,7 @@ router.get('/givescore/:id/:idSbj', (req, res)=> {
     include: [{all: true}]
   })
   .then( data => {
-    res.render(`givescore`, {dataScore : data})
+    res.render(`givescore`, {title:'Give Score Page',dataScore : data})
   })
 })
 

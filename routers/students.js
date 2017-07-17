@@ -54,6 +54,7 @@ router.get('/edit/:id', (req, res) => {
   db.Student.findById(id)
     .then(data => {
       res.render('edit_student', {
+        title: 'edit students page',
         header: 'Edit Student Page',
         edit_student: data,
         err_msg: null
@@ -117,7 +118,7 @@ router.get('/:id/addsubject', (req, res) => {
     .then ( data1 => {
       db.Subject.findAll()
       .then(data2 => {
-        res.render('addSubject', {header: 'Add Subject Page',dataAddSubject: data1, dataSubject: data2})
+        res.render('addSubject', {title: 'Add subject page',header: 'Add Subject Page',dataAddSubject: data1, dataSubject: data2})
         console.log('---------------------', data1.jurusan);
       })
     })
