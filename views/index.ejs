@@ -3,11 +3,12 @@
   <head>
     <meta charset="utf-8">
     <%- include ./layouts/title %>
+    <%- include ./layouts/style%>
   </head>
   <body>
-    <h1><%=header %></h1>
-    <a href="/teachers">teachers page</a>
-    <a href="/subjects">subjects page</a>
-    <a href="/students">students page</a>
+    <header>
+    <h1><%= header %></h1>
+    <%- include ./layouts/menubar %>
+    </header>
   </body>
 </html>
