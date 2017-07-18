@@ -13,7 +13,9 @@ router.get('/', (req, res) => {
     db.Subject.findAll()
     .then( data2 =>{
       res.render('teachers', {title: 'Teachers Page',header: 'Teachers Page',data_teacher: data1, data_subject: data2})
-      console.log(data2[0].subject_name);
+      data2.forEach( dt => {
+        console.log('---------------------', dt.id , dt.subject_name);
+      })
     })
   })
 })
@@ -37,8 +39,7 @@ router.get('/edit/:id', (req, res) => {
   .then( data1 => {
     db.Subject.findAll()
     .then( data2 =>{
-      res.render('edit_teacher', {header: 'Edit Teacher', data_teacher: data1, data_subject: data2})
-        console.log('------------------------------',data2[0].subject_name);
+      res.render('edit_teacher', {title: 'edit teachers page', header: 'Edit Teacher', data_teacher: data1, data_subject: data2})
     })
   })
 })

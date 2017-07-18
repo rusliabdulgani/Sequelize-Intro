@@ -5,7 +5,7 @@
     <%- include ./layouts/title %>
   </head>
   <body>
-    <%= header %>
+    <h3><%= header %></h3>
     <form action="/teachers/edit/<%= data_teacher.id %>" method="post">
       <table>
         <tr>
@@ -24,7 +24,7 @@
           <td>Subject Name:</td>
           <td>
           <select name="SubjectId">
-            <option value="<%data_subject[0].id%>"><%=data_subject[(data_teacher.SubjectId-1)].subject_name %></option>
+            <option value="<%=data_subject[0].id%>"><%=data_subject[(data_teacher.SubjectId-1)].subject_name %></option>
             <% data_subject.forEach( dt => { %>
               <option value="<%= dt.id %>"><%= dt.subject_name%></option>
             <% }) %>

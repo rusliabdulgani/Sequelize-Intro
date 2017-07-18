@@ -5,10 +5,8 @@ var router = express.Router();
 
 
 router.get('/', (req, res) =>{
-  res.render('index', {header: 'School App',title: 'School Apps', role: ''})
+  res.render('index', {title: 'school app',header: 'School App', role: ''})
 })
-
-
 
 
 
